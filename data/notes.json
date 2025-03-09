@@ -1,0 +1,19 @@
+[ {
+  "title" : "Meeting Notes",
+  "text" : "Discuss project milestones",
+  "url" : null,
+  "imgUrl" : null,
+  "category" : "Work"
+}, {
+  "title" : "Reference",
+  "text" : null,
+  "url" : "https://example.com",
+  "imgUrl" : null,
+  "category" : "Study"
+}, {
+  "title" : "Personal",
+  "text" : null,
+  "url" : null,
+  "imgUrl" : "https://image.example.com",
+  "category" : "Life"
+} ]
