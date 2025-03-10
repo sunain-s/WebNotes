@@ -47,6 +47,6 @@ public class NoteServlet extends HttpServlet {
             String title = request.getParameter("title");
             manager.deleteNote(title);
         }
-        response.sendRedirect("/index.jsp");
+        response.sendRedirect("/index");
     }
 }

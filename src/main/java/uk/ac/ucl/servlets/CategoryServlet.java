@@ -13,11 +13,11 @@ import java.util.List;
 @WebServlet("/categories")
 public class CategoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String category = request.getParameter("category");
+        String category = request.getParameter("categories");
         NoteManager manager = NoteManager.getInstance();
         List<Note> categoryNotes = manager.getNotes().stream()
                 .filter(n -> n.getCategory().equalsIgnoreCase(category)).toList();
-        request.setAttribute("category", category);
+        request.setAttribute("categories", category);
         request.setAttribute("notes", categoryNotes);
         request.getRequestDispatcher("/category.jsp").forward(request, response);
     }
