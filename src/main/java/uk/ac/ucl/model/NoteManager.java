@@ -34,24 +34,21 @@ public class NoteManager {
         return notes.stream().filter(n -> n.getTitle().equals(title)).findFirst().orElse(null);
     }
 
-    public void deleteNote(String title) {
-        notes.removeIf(n -> n.getTitle().equals(title));
+    public void addNote(Note note) {
+        notes.add(note);
+        saveNotes();
     }
 
-    public void editNote(String oldTitle, String newTitle, String newText, String newImgUrl, String newCategory) {
+    public void editNote(String oldTitle, String newTitle, String newText, String newUrl,  String newImgUrl, String newCategory) {
         Note note = getNoteByTitle(oldTitle);
         if (note != null) {
             note.setTitle(newTitle);
             note.setText(newText);
+            note.setUrl(newUrl);
             note.setImgUrl(newImgUrl);
             note.setCategory(newCategory);
             saveNotes();
         }
-    }
-
-    public void addNote(Note note) {
-        notes.add(note);
-        saveNotes();
     }
 
     private void saveNotes() {
@@ -74,6 +71,10 @@ public class NoteManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void deleteNote(String title) {
+        notes.removeIf(n -> n.getTitle().equals(title));
     }
 
     public List<Note> searchNotes(String searchTerm) {

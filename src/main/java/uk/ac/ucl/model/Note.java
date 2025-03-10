@@ -37,33 +37,44 @@ public class Note implements Serializable {
     }
 
     // getters
-    public String getTitle() { return title; }
-    public String getText() { return text; }
-    public String getUrl() { return url; }
-    public String getImgUrl() { return imgUrl; }
-    public String getCategory() { return category; }
+    public String getTitle() {
+        return title;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public String getCategory() {
+        return category;
+    }
 
     // setters
-    public void setTitle(String title) { this.title = title; }
-    public void setText(String text) { this.text = text; }
-    public void setUrl(String url) { this.url = url; }
-    public void setImgUrl(String imgUrl) { this.imgUrl = imgUrl; }
-    public void setCategory(String category) { this.category = category; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-//    public static void main(String[] args) {
-//        try {
-//            Note note1 = new Note("Meeting Notes", "Work", "Discuss project milestones", null, "Work");
-//            System.out.println("Note 1 created: " + note1.getTitle());
-//
-//            Note note2 = new Note("Reference", "Study", null, "https://example.com", "Hi");
-//            System.out.println("Note 2 created: " + note2.getTitle());
-//
-//            // This will throw an exception because no text, url, or imgUrl is provided
-//            Note invalidNote = new Note("Invalid", null, null, null, "General");
-//            System.out.println("Invalid Note created: " + invalidNote.getTitle());
-//
-//        } catch (IllegalArgumentException e) {
-//            System.out.println("Error: " + e.getMessage());
-//        }
-//    }
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

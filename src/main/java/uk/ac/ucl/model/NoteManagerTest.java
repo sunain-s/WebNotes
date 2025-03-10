@@ -39,7 +39,7 @@ public class NoteManagerTest {
 
         // 7. Edit a note
         System.out.println("\nEditing 'Meeting Notes'...");
-        noteManager.editNote("Meeting Notes", "Updated Meeting Notes", "Updated discussion points", null, "Work");
+        noteManager.editNote("Meeting Notes", "Updated Meeting Notes", "Updated discussion points", null, null, "Work");
         Note updatedNote = noteManager.getNoteByTitle("Updated Meeting Notes");
         if (updatedNote != null) {
             System.out.println("Updated Note: " + updatedNote.getTitle() + " - " + updatedNote.getText());
