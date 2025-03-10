@@ -7,63 +7,62 @@ public class NoteManagerTest {
         // 1. Get the singleton instance of NoteManager
         NoteManager noteManager = NoteManager.getInstance();
 
-        try {
-            // 2. Create some valid notes to add
-            Note note1 = new Note("Meeting Notes", "Discuss project milestones", null, null, "Work");
-            Note note2 = new Note("Reference", null, "https://example.com", null, "Study");
-            Note note3 = new Note("Personal", null, null, "https://image.example.com", "Life");
+        // 2. Clear any existing notes for a clean test
+        noteManager.getNotes().clear();
 
-            // 3. Add valid notes using NoteManager
-            noteManager.addNote(note1);
-            noteManager.addNote(note2);
-            noteManager.addNote(note3);
+        // 3. Create some notes
+        Note note1 = new Note("Meeting Notes", "Discuss project milestones", null, null, "Work");
+        Note note2 = new Note("Reference", null, "https://example.com", null, "Study");
+        Note note3 = new Note("Personal Journal", "Reflections on the day", null, null, "Life");
 
-            // 4. Retrieve and display the list of notes
-            List<Note> notes = noteManager.getNotes();
-            System.out.println("Notes in the system:");
-            for (Note note : notes) {
-                System.out.println("Title: " + note.getTitle() + ", Category: " + note.getCategory());
-                if (note.getText() != null) {
-                    System.out.println("Text: " + note.getText());
-                }
-                if (note.getUrl() != null) {
-                    System.out.println("URL: " + note.getUrl());
-                }
-                if (note.getImgUrl() != null) {
-                    System.out.println("Image URL: " + note.getImgUrl());
-                }
-                System.out.println("---");
-            }
+        // 4. Add notes to the manager
+        System.out.println("Adding notes...");
+        noteManager.addNote(note1);
+        noteManager.addNote(note2);
+        noteManager.addNote(note3);
 
-            // 5. Try creating an invalid note that should throw an exception
-            try {
-                // This should throw an IllegalArgumentException due to missing content (text/url/image)
-                Note invalidNote = new Note("Invalid Note", null, null, null, "General");
-                System.out.println("Invalid Note created: " + invalidNote.getTitle());
-            } catch (IllegalArgumentException e) {
-                System.out.println("Error: " + e.getMessage()); // Expected: "Note content (text/url/image) is required"
-            }
+        // 5. Retrieve and display all notes
+        System.out.println("\nAll Notes:");
+        List<Note> notes = noteManager.getNotes();
+        for (Note note : notes) {
+            System.out.println("Title: " + note.getTitle() + ", Category: " + note.getCategory());
+        }
 
-            // 6. Simulate loading and saving notes (it will persist them in the file)
-            NoteManager anotherNoteManager = NoteManager.getInstance();
-            List<Note> loadedNotes = anotherNoteManager.getNotes();
-            System.out.println("Loaded Notes after persistence:");
-            for (Note loadedNote : loadedNotes) {
-                System.out.println("Title: " + loadedNote.getTitle() + ", Category: " + loadedNote.getCategory());
-                if (loadedNote.getText() != null) {
-                    System.out.println("Text: " + loadedNote.getText());
-                }
-                if (loadedNote.getUrl() != null) {
-                    System.out.println("URL: " + loadedNote.getUrl());
-                }
-                if (loadedNote.getImgUrl() != null) {
-                    System.out.println("Image URL: " + loadedNote.getImgUrl());
-                }
-                System.out.println("---");
-            }
+        // 6. Retrieve a specific note by title
+        System.out.println("\nRetrieving 'Meeting Notes'...");
+        Note retrievedNote = noteManager.getNoteByTitle("Meeting Notes");
+        if (retrievedNote != null) {
+            System.out.println("Found Note: " + retrievedNote.getTitle() + " - " + retrievedNote.getText());
+        } else {
+            System.out.println("Note not found.");
+        }
 
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+        // 7. Edit a note
+        System.out.println("\nEditing 'Meeting Notes'...");
+        noteManager.editNote("Meeting Notes", "Updated Meeting Notes", "Updated discussion points", null, "Work");
+        Note updatedNote = noteManager.getNoteByTitle("Updated Meeting Notes");
+        if (updatedNote != null) {
+            System.out.println("Updated Note: " + updatedNote.getTitle() + " - " + updatedNote.getText());
+        }
+
+        // 8. Search for notes containing a keyword
+        System.out.println("\nSearching for 'Reference'...");
+        List<Note> searchResults = noteManager.searchNotes("Reference");
+        for (Note searchNote : searchResults) {
+            System.out.println("Found: " + searchNote.getTitle());
+        }
+
+        // 9. Delete a note
+        System.out.println("\nDeleting 'Updated Meeting Notes'...");
+        noteManager.deleteNote("Updated Meeting Notes");
+        Note deletedNote = noteManager.getNoteByTitle("Updated Meeting Notes");
+        System.out.println(deletedNote == null ? "Note successfully deleted!" : "Deletion failed.");
+
+        // 10. Display final notes after deletion
+        System.out.println("\nFinal Notes List:");
+        notes = noteManager.getNotes();
+        for (Note note : notes) {
+            System.out.println("Title: " + note.getTitle());
         }
     }
 }

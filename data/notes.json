@@ -1,6 +1,6 @@
 [ {
-  "title" : "Meeting Notes",
-  "text" : "Discuss project milestones",
+  "title" : "Updated Meeting Notes",
+  "text" : "Updated discussion points",
   "url" : null,
   "imgUrl" : null,
   "category" : "Work"
@@ -11,9 +11,9 @@
   "imgUrl" : null,
   "category" : "Study"
 }, {
-  "title" : "Personal",
-  "text" : null,
+  "title" : "Personal Journal",
+  "text" : "Reflections on the day",
   "url" : null,
-  "imgUrl" : "https://image.example.com",
+  "imgUrl" : null,
   "category" : "Life"
 } ]

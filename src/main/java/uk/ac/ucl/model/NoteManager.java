@@ -1,8 +1,6 @@
 package uk.ac.ucl.model;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
@@ -28,13 +26,32 @@ public class NoteManager {
         return nm_instance;
     }
 
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public Note getNoteByTitle(String title) {
+        return notes.stream().filter(n -> n.getTitle().equals(title)).findFirst().orElse(null);
+    }
+
+    public void deleteNote(String title) {
+        notes.removeIf(n -> n.getTitle().equals(title));
+    }
+
+    public void editNote(String oldTitle, String newTitle, String newText, String newImgUrl, String newCategory) {
+        Note note = getNoteByTitle(oldTitle);
+        if (note != null) {
+            note.setTitle(newTitle);
+            note.setText(newText);
+            note.setImgUrl(newImgUrl);
+            note.setCategory(newCategory);
+            saveNotes();
+        }
+    }
+
     public void addNote(Note note) {
         notes.add(note);
         saveNotes();
-    }
-
-    public List<Note> getNotes() {
-        return notes;
     }
 
     private void saveNotes() {
@@ -49,12 +66,18 @@ public class NoteManager {
         try {
             File file = new File(NOTES_PATH);
             if (file.exists()) {
-                notes = mapper.readValue(file, new TypeReference<List<Note>>() {});
+                notes = mapper.readValue(file, new TypeReference<List<Note>>() {
+                });
             } else {
                 notes = new ArrayList<>();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<Note> searchNotes(String searchTerm) {
+        return notes.stream().filter(n -> n.getTitle().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                n.getText().toLowerCase().contains(searchTerm.toLowerCase())).collect(Collectors.toList());
     }
 }
