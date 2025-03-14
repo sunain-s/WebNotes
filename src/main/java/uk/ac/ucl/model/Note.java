@@ -38,22 +38,37 @@ public class Note implements Serializable {
 
     // getters
     public String getTitle() {
+        if (title == null) {
+            return "";
+        }
         return title;
     }
 
     public String getText() {
+        if (text == null) {
+            return "";
+        }
         return text;
     }
 
     public String getUrl() {
+        if (url == null) {
+            return "";
+        }
         return url;
     }
 
     public String getImgUrl() {
+        if (imgUrl == null) {
+            return "";
+        }
         return imgUrl;
     }
 
     public String getCategory() {
+        if (category == null) {
+            return "";
+        }
         return category;
     }
 

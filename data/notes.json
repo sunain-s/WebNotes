@@ -1,37 +1,49 @@
 [ {
   "title" : "Updated Meeting Notes",
   "text" : "Updated discussion points",
-  "url" : null,
-  "imgUrl" : null,
+  "url" : "",
+  "imgUrl" : "",
   "category" : "Work"
 }, {
   "title" : "Reference",
-  "text" : null,
+  "text" : "",
   "url" : "https://example.com",
-  "imgUrl" : null,
+  "imgUrl" : "",
   "category" : "Study"
 }, {
   "title" : "Personal Journal",
   "text" : "Reflections on the day",
-  "url" : null,
-  "imgUrl" : null,
-  "category" : "Life"
-}, {
-  "title" : "Hello",
-  "text" : "hi there :)",
-  "url" : "https://github.com/sunain-s/WebNotes/",
-  "imgUrl" : "",
-  "category" : "Test"
-}, {
-  "title" : "test note",
-  "text" : "im testing things",
   "url" : "",
   "imgUrl" : "",
-  "category" : "Test"
+  "category" : "Life"
 }, {
-  "title" : "wazzaaap",
-  "text" : "wazaazaappap",
+  "title" : "foo",
+  "text" : "something",
   "url" : "",
   "imgUrl" : "",
   "category" : "test"
+}, {
+  "title" : "Testing note",
+  "text" : "i have edited this note",
+  "url" : "https://www.youtube.com",
+  "imgUrl" : "",
+  "category" : "test"
+}, {
+  "title" : "Search Test",
+  "text" : "im testing search",
+  "url" : "",
+  "imgUrl" : "",
+  "category" : "test"
+}, {
+  "title" : "search test note 2",
+  "text" : "this is a second search test",
+  "url" : "",
+  "imgUrl" : "",
+  "category" : "test"
+}, {
+  "title" : "category filter",
+  "text" : "testing categories!!",
+  "url" : "",
+  "imgUrl" : "",
+  "category" : "Life"
 } ]
