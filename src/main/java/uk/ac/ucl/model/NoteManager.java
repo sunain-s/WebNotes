@@ -34,19 +34,25 @@ public class NoteManager {
         return notes.stream().filter(n -> n.getTitle().equals(title)).findFirst().orElse(null);
     }
 
+    public List<Note> getNotesByCategory(String category) {
+        return notes.stream()
+                .filter(n -> n.getCategories().contains(category))
+                .collect(Collectors.toList());
+    }
+
     public void addNote(Note note) {
         notes.add(note);
         saveNotes();
     }
 
-    public void editNote(String oldTitle, String newTitle, String newText, String newUrl,  String newImgUrl, String newCategory) {
+    public void editNote(String oldTitle, String newTitle, String newText, String newUrl,  String newImgUrl, List<String> newCategories) {
         Note note = getNoteByTitle(oldTitle);
         if (note != null) {
             note.setTitle(newTitle);
             note.setText(newText);
             note.setUrl(newUrl);
             note.setImgUrl(newImgUrl);
-            note.setCategory(newCategory);
+            note.setCategories(newCategories);
             saveNotes();
         }
     }
@@ -63,8 +69,13 @@ public class NoteManager {
         try {
             File file = new File(NOTES_PATH);
             if (file.exists()) {
-                notes = mapper.readValue(file, new TypeReference<List<Note>>() {
-                });
+                List<Note> loadedNotes = mapper.readValue(file, new TypeReference<List<Note>>() {});
+                for (Note note : loadedNotes) {
+                    if (note.getCategories() == null || note.getCategories().isEmpty()) {
+                        note.setCategories(List.of("Uncategorized")); // Assign a default category
+                    }
+                }
+                notes = loadedNotes;
             } else {
                 notes = new ArrayList<>();
             }
@@ -75,6 +86,7 @@ public class NoteManager {
 
     public void deleteNote(String title) {
         notes.removeIf(n -> n.getTitle().equals(title));
+        saveNotes();
     }
 
     public List<Note> searchNotes(String searchTerm) {

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="uk.ac.ucl.model.Note" %>
 
@@ -16,17 +16,15 @@
             if (results != null && !results.isEmpty()) {
                 for (Note note : results) {
         %>
-        <li>
-            <a href="note?title=<%= note.getTitle() %>"><%= note.getTitle() %></a> - <%= note.getCategory() %>
-        </li>
+                    <li>
+                        <a href="note?title=<%= note.getTitle() %>"><%= note.getTitle() %></a> - <%= String.join(", ", note.getCategories()) %>
+                    </li>
         <%
-            }
-        } else {
+                }
+            } else {
         %>
-        <p>No notes found matching your search.</p>
-        <%
-            }
-        %>
+                <p>No notes found matching your search.</p>
+        <%  }%>
     </ul>
 
     <br>

@@ -3,13 +3,14 @@ package uk.ac.ucl.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
 
 public class Note implements Serializable {
     private String title;
     private String text;
     private String url;
     private String imgUrl;
-    private String category;
+    private List<String> categories;
 
     @JsonCreator
     public Note(
@@ -17,13 +18,13 @@ public class Note implements Serializable {
             @JsonProperty("text") String text,
             @JsonProperty("url") String url,
             @JsonProperty("imgUrl") String imgUrl,
-            @JsonProperty("category") String category) {
+            @JsonProperty("categories") List<String> categories) {
 
         if (title == null || title.isEmpty()) {
             throw new IllegalArgumentException("Note title is required");
         }
-        if (category == null || category.isEmpty()) {
-            throw new IllegalArgumentException("Note category is required");
+        if (categories == null || categories.isEmpty() || categories.contains("")) {
+            throw new IllegalArgumentException("At least one category is required");
         }
         if ((text == null || text.isEmpty()) && (url == null || url.isEmpty()) && (imgUrl == null || imgUrl.isEmpty())) {
             throw new IllegalArgumentException("Note content (text, url, or image) is required");
@@ -33,7 +34,7 @@ public class Note implements Serializable {
         this.text = text;
         this.url = url;
         this.imgUrl = imgUrl;
-        this.category = category;
+        this.categories = categories;
     }
 
     // getters
@@ -65,11 +66,11 @@ public class Note implements Serializable {
         return imgUrl;
     }
 
-    public String getCategory() {
-        if (category == null) {
-            return "";
+    public List<String> getCategories() {
+        if (categories == null) {
+            return List.of();
         }
-        return category;
+        return categories;
     }
 
     // setters
@@ -89,7 +90,7 @@ public class Note implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 }

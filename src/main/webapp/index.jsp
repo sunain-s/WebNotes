@@ -17,7 +17,8 @@
                 for (Note note : notes) {
         %>
         <li>
-            <a href="note?title=<%= note.getTitle() %>"><%= note.getTitle() %></a> - Category: <%= note.getCategory() %>
+            <a href="note?title=<%= note.getTitle() %>"><%= note.getTitle() %></a> - Categories:
+            <%= String.join(", ", note.getCategories()) %>
         </li>
         <%
                 }
@@ -32,7 +33,7 @@
         <label><textarea name="text" placeholder="Note Content"></textarea></label>
         <label><input type="text" name="url" placeholder="URL"></label>
         <label><input type="text" name="imgUrl" placeholder="Image URL"></label>
-        <label><input type="text" name="category" placeholder="Category" required></label>
+        <label><input type="text" name="categories" placeholder="Enter categories (comma-separated)" required></label>
         <button type="submit">Add Note</button>
     </form>
 

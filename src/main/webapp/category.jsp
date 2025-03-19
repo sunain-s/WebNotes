@@ -16,17 +16,16 @@
             if (notes != null && !notes.isEmpty()) {
                 for (Note note : notes) {
         %>
-        <li>
-            <a href="note?title=<%= note.getTitle() %>"><%= note.getTitle() %></a> - <%= note.getCategory() %>
-        </li>
+                    <li>
+                        <a href="note?title=<%= note.getTitle() %>"><%= note.getTitle() %></a> - Categories:
+                        <%= String.join(", ", note.getCategories()) %>
+                    </li>
         <%
-            }
-        } else {
+                }
+            } else {
         %>
-        <p>No notes found in this category.</p>
-        <%
-            }
-        %>
+                <p>No notes found in this category.</p>
+        <%  }%>
     </ul>
 
     <br>

@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import uk.ac.ucl.model.NoteManager;
 import uk.ac.ucl.model.Note;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/note")
 public class NoteServlet extends HttpServlet {
@@ -17,7 +18,7 @@ public class NoteServlet extends HttpServlet {
         Note note = manager.getNoteByTitle(title);
 
         if (note == null) {
-            response.sendRedirect("/index.jsp");
+            response.sendRedirect("/index");
         } else {
             request.setAttribute("note", note);
             request.getRequestDispatcher("/note.jsp").forward(request, response);
@@ -33,16 +34,25 @@ public class NoteServlet extends HttpServlet {
             String text = request.getParameter("text");
             String url = request.getParameter("url");
             String imgUrl = request.getParameter("imgUrl");
-            String category = request.getParameter("category");
-            manager.addNote(new Note(title, text, url, imgUrl, category));
+
+            String categoriesParam = request.getParameter("categories");
+            List<String> categories = (categoriesParam != null && !categoriesParam.trim().isEmpty())
+                    ? List.of(categoriesParam.split("\\s*,\\s*"))
+                    : List.of("Uncategorized");
+            manager.addNote(new Note(title, text, url, imgUrl, categories));
+
         } else if ("edit".equals(action)) {
             String oldTitle = request.getParameter("oldTitle");
             String newTitle = request.getParameter("newTitle");
             String newText = request.getParameter("newText");
             String newUrl = request.getParameter("newUrl");
             String newImgUrl = request.getParameter("newImgUrl");
-            String newCategory = request.getParameter("newCategory");
-            manager.editNote(oldTitle, newTitle, newText, newUrl, newImgUrl, newCategory);
+
+            String newCategoriesParam = request.getParameter("newCategories");
+            List<String> newCategories = (newCategoriesParam != null && !newCategoriesParam.trim().isEmpty())
+                    ? List.of(newCategoriesParam.split("\\s*,\\s*"))
+                    : List.of("Uncategorized");
+            manager.editNote(oldTitle, newTitle, newText, newUrl, newImgUrl, newCategories);
         } else if ("delete".equals(action)) {
             String title = request.getParameter("title");
             manager.deleteNote(title);

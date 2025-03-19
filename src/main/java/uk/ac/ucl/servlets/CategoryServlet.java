@@ -15,8 +15,7 @@ public class CategoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String category = request.getParameter("categories");
         NoteManager manager = NoteManager.getInstance();
-        List<Note> categoryNotes = manager.getNotes().stream()
-                .filter(n -> n.getCategory().equalsIgnoreCase(category)).toList();
+        List<Note> categoryNotes = manager.getNotesByCategory(category);
         request.setAttribute("categories", category);
         request.setAttribute("notes", categoryNotes);
         request.getRequestDispatcher("/category.jsp").forward(request, response);

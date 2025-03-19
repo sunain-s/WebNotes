@@ -1,49 +1,25 @@
 [ {
-  "title" : "Updated Meeting Notes",
-  "text" : "Updated discussion points",
+  "title" : "Meeting Notes",
+  "text" : "Discuss project milestones",
   "url" : "",
   "imgUrl" : "",
-  "category" : "Work"
+  "categories" : [ "Work" ]
 }, {
   "title" : "Reference",
   "text" : "",
   "url" : "https://example.com",
   "imgUrl" : "",
-  "category" : "Study"
+  "categories" : [ "Study", "Research" ]
 }, {
-  "title" : "Personal Journal",
-  "text" : "Reflections on the day",
+  "title" : "Testing",
+  "text" : "testing some more stuff",
+  "url" : "",
+  "imgUrl" : "C:/Users/sunai/AGSBArchive/A-Level/Computer Science/Programming/Fun Website/Images/GintokiShock.png",
+  "categories" : [ "Wow", "Test", "Wazzap" ]
+}, {
+  "title" : "Hello",
+  "text" : "hiiiiiii\r\nnice to meet youuuuu\r\nhave a good dayyyyyyy",
   "url" : "",
   "imgUrl" : "",
-  "category" : "Life"
-}, {
-  "title" : "foo",
-  "text" : "something",
-  "url" : "",
-  "imgUrl" : "",
-  "category" : "test"
-}, {
-  "title" : "Testing note",
-  "text" : "i have edited this note",
-  "url" : "https://www.youtube.com",
-  "imgUrl" : "",
-  "category" : "test"
-}, {
-  "title" : "Search Test",
-  "text" : "im testing search",
-  "url" : "",
-  "imgUrl" : "",
-  "category" : "test"
-}, {
-  "title" : "search test note 2",
-  "text" : "this is a second search test",
-  "url" : "",
-  "imgUrl" : "",
-  "category" : "test"
-}, {
-  "title" : "category filter",
-  "text" : "testing categories!!",
-  "url" : "",
-  "imgUrl" : "",
-  "category" : "Life"
+  "categories" : [ "Greeting", "Life" ]
 } ]

@@ -10,10 +10,10 @@ public class NoteManagerTest {
         // 2. Clear any existing notes for a clean test
         noteManager.getNotes().clear();
 
-        // 3. Create some notes
-        Note note1 = new Note("Meeting Notes", "Discuss project milestones", null, null, "Work");
-        Note note2 = new Note("Reference", null, "https://example.com", null, "Study");
-        Note note3 = new Note("Personal Journal", "Reflections on the day", null, null, "Life");
+        // 3. Create some notes with multiple categories
+        Note note1 = new Note("Meeting Notes", "Discuss project milestones", null, null, List.of("Work", "Important"));
+        Note note2 = new Note("Reference", null, "https://example.com", null, List.of("Study", "Research"));
+        Note note3 = new Note("Personal Journal", "Reflections on the day", null, null, List.of("Life", "Diary"));
 
         // 4. Add notes to the manager
         System.out.println("Adding notes...");
@@ -25,7 +25,7 @@ public class NoteManagerTest {
         System.out.println("\nAll Notes:");
         List<Note> notes = noteManager.getNotes();
         for (Note note : notes) {
-            System.out.println("Title: " + note.getTitle() + ", Category: " + note.getCategory());
+            System.out.println("Title: " + note.getTitle() + ", Categories: " + String.join(", ", note.getCategories()));
         }
 
         // 6. Retrieve a specific note by title
@@ -39,7 +39,7 @@ public class NoteManagerTest {
 
         // 7. Edit a note
         System.out.println("\nEditing 'Meeting Notes'...");
-        noteManager.editNote("Meeting Notes", "Updated Meeting Notes", "Updated discussion points", null, null, "Work");
+        noteManager.editNote("Meeting Notes", "Updated Meeting Notes", "Updated discussion points", null, null, List.of("Work", "Team Meeting"));
         Note updatedNote = noteManager.getNoteByTitle("Updated Meeting Notes");
         if (updatedNote != null) {
             System.out.println("Updated Note: " + updatedNote.getTitle() + " - " + updatedNote.getText());
@@ -62,7 +62,7 @@ public class NoteManagerTest {
         System.out.println("\nFinal Notes List:");
         notes = noteManager.getNotes();
         for (Note note : notes) {
-            System.out.println("Title: " + note.getTitle());
+            System.out.println("Title: " + note.getTitle() + ", Categories: " + String.join(", ", note.getCategories()));
         }
     }
 }
