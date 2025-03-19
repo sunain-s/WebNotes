@@ -90,7 +90,6 @@ public class NoteManager {
     }
 
     public List<Note> searchNotes(String searchTerm) {
-        return notes.stream().filter(n -> n.getTitle().toLowerCase().contains(searchTerm.toLowerCase()) ||
-                n.getText().toLowerCase().contains(searchTerm.toLowerCase())).collect(Collectors.toList());
+        return new NoteSearch().searchNotes(searchTerm, notes);
     }
 }

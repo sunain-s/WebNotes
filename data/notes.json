@@ -22,4 +22,10 @@
   "url" : "",
   "imgUrl" : "",
   "categories" : [ "Greeting", "Life" ]
+}, {
+  "title" : "Note",
+  "text" : "this is a test",
+  "url" : "",
+  "imgUrl" : "",
+  "categories" : [ "Note" ]
 } ]
