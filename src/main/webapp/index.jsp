@@ -64,7 +64,7 @@
     } else {
         for (String category : allCategories) {
     %>
-    <label><input type="checkbox" name="categories[]" value="<%= category %>"></label>
+    <label><input type="checkbox" name="categories" value="<%= category %>"></label>
     <%= category %> <br>
     <%
             }
@@ -81,19 +81,22 @@
 </form>
 
 <h2>Filter by Category</h2>
-<form action="categories" method="get">
+<form action="index" method="get">
     <label>Select Category:</label>
-    <select name="category">
+    <label><select name="category">
         <option value="">-- Select a Category --</option>
         <%
+            String selectedCategory = (String) request.getAttribute("selectedCategory"); // Keep selection
             for (String category : allCategories) {
         %>
-        <option value="<%= category %>" <%= category.equals(request.getParameter("category")) ? "selected" : "" %>><%= category %></option>
+        <option value="<%= category %>" <%= category.equals(selectedCategory) ? "selected" : "" %>><%= category %></option>
         <%
             }
         %>
-    </select>
+    </select></label>
     <button type="submit">Filter</button>
 </form>
+
+
 </body>
 </html>

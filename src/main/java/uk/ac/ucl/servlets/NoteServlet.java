@@ -36,11 +36,15 @@ public class NoteServlet extends HttpServlet {
             String url = request.getParameter("url");
             String imgUrl = request.getParameter("imgUrl");
 
-            // Get multiple selected categories
+            // Retrieve multiple selected categories correctly
             String[] selectedCategories = request.getParameterValues("categories");
-            List<String> categories = selectedCategories != null ? Arrays.asList(selectedCategories) : List.of();
 
-            if (categories.isEmpty()) {
+            // Ensure categories are not null and at least one is selected
+            List<String> categories = (selectedCategories != null && selectedCategories.length > 0)
+                    ? Arrays.asList(selectedCategories)
+                    : null;
+
+            if (categories == null) {
                 response.sendRedirect("/index?error=CategoryRequired");
                 return;
             }
@@ -53,9 +57,18 @@ public class NoteServlet extends HttpServlet {
             String newUrl = request.getParameter("newUrl");
             String newImgUrl = request.getParameter("newImgUrl");
 
-            // Get multiple selected categories
+            // Retrieve multiple selected categories correctly
             String[] selectedCategories = request.getParameterValues("categories");
-            List<String> newCategories = selectedCategories != null ? Arrays.asList(selectedCategories) : List.of();
+
+            // Ensure categories are not null and at least one is selected
+            List<String> newCategories = (selectedCategories != null && selectedCategories.length > 0)
+                    ? Arrays.asList(selectedCategories)
+                    : null;
+
+            if (newCategories == null) {
+                response.sendRedirect("/index?error=CategoryRequired");
+                return;
+            }
 
             manager.editNote(oldTitle, newTitle, newText, newUrl, newImgUrl, newCategories);
         }

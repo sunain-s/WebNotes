@@ -35,9 +35,9 @@
   "text" : "bananaaaaaaaaaas",
   "url" : "https://www.banana.com",
   "imgUrl" : "",
-  "categories" : [ "Test", "Life", "Fun" ],
+  "categories" : [ "Work", "Life", "Fun" ],
   "createdAt" : "2025-03-20T11:28:36.0068936",
-  "editedAt" : "2025-03-20T11:28:36.0068936"
+  "editedAt" : "2025-03-20T17:15:56.1488361"
 }, {
   "title" : "Mitochondria",
   "text" : "Mitochondria is the powerhouse of the cell",
@@ -54,4 +54,12 @@
   "categories" : [ "Test", "Study", "Meeting" ],
   "createdAt" : "2025-03-20T15:53:52.9402018",
   "editedAt" : "2025-03-20T16:20:26.775498"
+}, {
+  "title" : "Lina",
+  "text" : "linaaaaaaaaaaaaaa",
+  "url" : "https://www.youtube.com",
+  "imgUrl" : "img/GintokiShock.ico",
+  "categories" : [ "Life", "Fun", "Image" ],
+  "createdAt" : "2025-03-20T17:42:56.5387639",
+  "editedAt" : "2025-03-20T17:42:56.5387639"
 } ]
