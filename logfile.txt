@@ -1,2 +1,2 @@
-Mar 20, 2025 12:43:29 AM uk.ac.ucl.main.Main main
+Mar 20, 2025 4:19:21 PM uk.ac.ucl.main.Main main
 INFO: Server started successfully on port 8080

@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import uk.ac.ucl.model.NoteManager;
 import uk.ac.ucl.model.Note;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("/note")
@@ -35,12 +36,16 @@ public class NoteServlet extends HttpServlet {
             String url = request.getParameter("url");
             String imgUrl = request.getParameter("imgUrl");
 
-            String categoriesParam = request.getParameter("categories");
-            List<String> categories = (categoriesParam != null && !categoriesParam.trim().isEmpty())
-                    ? List.of(categoriesParam.split("\\s*,\\s*"))
-                    : List.of("Uncategorized");
-            manager.addNote(new Note(title, text, url, imgUrl, categories));
+            // Get multiple selected categories
+            String[] selectedCategories = request.getParameterValues("categories");
+            List<String> categories = selectedCategories != null ? Arrays.asList(selectedCategories) : List.of();
 
+            if (categories.isEmpty()) {
+                response.sendRedirect("/index?error=CategoryRequired");
+                return;
+            }
+
+            manager.addNote(new Note(title, text, url, imgUrl, categories));
         } else if ("edit".equals(action)) {
             String oldTitle = request.getParameter("oldTitle");
             String newTitle = request.getParameter("newTitle");
@@ -48,15 +53,13 @@ public class NoteServlet extends HttpServlet {
             String newUrl = request.getParameter("newUrl");
             String newImgUrl = request.getParameter("newImgUrl");
 
-            String newCategoriesParam = request.getParameter("newCategories");
-            List<String> newCategories = (newCategoriesParam != null && !newCategoriesParam.trim().isEmpty())
-                    ? List.of(newCategoriesParam.split("\\s*,\\s*"))
-                    : List.of("Uncategorized");
+            // Get multiple selected categories
+            String[] selectedCategories = request.getParameterValues("categories");
+            List<String> newCategories = selectedCategories != null ? Arrays.asList(selectedCategories) : List.of();
+
             manager.editNote(oldTitle, newTitle, newText, newUrl, newImgUrl, newCategories);
-        } else if ("delete".equals(action)) {
-            String title = request.getParameter("title");
-            manager.deleteNote(title);
         }
+
         response.sendRedirect("/index");
     }
 }

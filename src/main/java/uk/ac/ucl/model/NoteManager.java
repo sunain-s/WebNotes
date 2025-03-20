@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.Collections;
 
 public class NoteManager {
     private static NoteManager nm_instance = null;
@@ -61,7 +63,7 @@ public class NoteManager {
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(NOTES_PATH), notes);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -92,5 +94,32 @@ public class NoteManager {
 
     public List<Note> searchNotes(String searchTerm) {
         return new NoteSearch().searchNotes(searchTerm, notes);
+    }
+
+    public List<Note> getNotesSortedByTitle(List<Note> notesToSort, boolean ascending) {
+        List<Note> sortedNotes = new ArrayList<>(notesToSort);
+        sortedNotes.sort(Comparator.comparing(Note::getTitle));
+        if (!ascending) {
+            Collections.reverse(sortedNotes);
+        }
+        return sortedNotes;
+    }
+
+    public List<Note> getNotesSortedByCreatedAt(List<Note> notesToSort, boolean ascending) {
+        List<Note> sortedNotes = new ArrayList<>(notesToSort);
+        sortedNotes.sort(Comparator.comparing(Note::getCreatedAt));
+        if (!ascending) {
+            Collections.reverse(sortedNotes);
+        }
+        return sortedNotes;
+    }
+
+    public List<Note> getNotesSortedByEditedAt(List<Note> notesToSort, boolean ascending) {
+        List<Note> sortedNotes = new ArrayList<>(notesToSort);
+        sortedNotes.sort(Comparator.comparing(Note::getEditedAt));
+        if (!ascending) {
+            Collections.reverse(sortedNotes);
+        }
+        return sortedNotes;
     }
 }

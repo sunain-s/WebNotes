@@ -1,11 +1,11 @@
 [ {
   "title" : "Testing Editing",
-  "text" : "This is a sample note",
+  "text" : "This is an edited sample note",
   "url" : "https://example.com",
   "imgUrl" : "https://example.com/image.jpg",
   "categories" : [ "Test", "Work" ],
   "createdAt" : "2025-03-19T15:30:45",
-  "editedAt" : "2025-03-20T00:23:25.8895713"
+  "editedAt" : "2025-03-20T11:24:03.3238781"
 }, {
   "title" : "Meeting Notes",
   "text" : "making some notes from a meeting i guess?",
@@ -14,4 +14,44 @@
   "categories" : [ "Work", "Meeting" ],
   "createdAt" : "2025-03-20T00:25:51.4654505",
   "editedAt" : "2025-03-20T00:25:51.4654505"
+}, {
+  "title" : "Image Note",
+  "text" : "trying to place an image",
+  "url" : "",
+  "imgUrl" : "img/GintokiShock.ico",
+  "categories" : [ "Test", "Image" ],
+  "createdAt" : "2025-03-20T11:08:06.1972693",
+  "editedAt" : "2025-03-20T11:08:06.1972693"
+}, {
+  "title" : "Alphabet",
+  "text" : "abcdefghijklmnopqrstuvwxyz",
+  "url" : "",
+  "imgUrl" : "",
+  "categories" : [ "Study" ],
+  "createdAt" : "2025-03-20T11:24:49.1183918",
+  "editedAt" : "2025-03-20T11:24:49.1183918"
+}, {
+  "title" : "Banana",
+  "text" : "bananaaaaaaaaaas",
+  "url" : "https://www.banana.com",
+  "imgUrl" : "",
+  "categories" : [ "Test", "Life", "Fun" ],
+  "createdAt" : "2025-03-20T11:28:36.0068936",
+  "editedAt" : "2025-03-20T11:28:36.0068936"
+}, {
+  "title" : "Mitochondria",
+  "text" : "Mitochondria is the powerhouse of the cell",
+  "url" : "",
+  "imgUrl" : "",
+  "categories" : [ "Work", "Study" ],
+  "createdAt" : "2025-03-20T15:52:22.0106259",
+  "editedAt" : "2025-03-20T16:20:36.7791162"
+}, {
+  "title" : "Multi Select",
+  "text" : "this is another test",
+  "url" : "",
+  "imgUrl" : "",
+  "categories" : [ "Test", "Study", "Meeting" ],
+  "createdAt" : "2025-03-20T15:53:52.9402018",
+  "editedAt" : "2025-03-20T16:20:26.775498"
 } ]

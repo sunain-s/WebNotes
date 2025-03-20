@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.text.SimpleDateFormat, java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat, java.util.Date, java.util.List" %>
 <%@ page import="uk.ac.ucl.model.Note" %>
+<%@ page import="uk.ac.ucl.model.CategoryManager" %>
 
 <html>
 <%
@@ -46,19 +47,31 @@
             <img src="<%= note.getImgUrl() %>" alt="Note Image" width="200">
         <% } %>
 
-        <h2>Edit Note</h2>
-        <form action="note" method="post">
-            <input type="hidden" name="action" value="edit">
-            <input type="hidden" name="oldTitle" value="<%= note.getTitle() %>">
-            <label><input type="text" name="newTitle" value="<%= note.getTitle() %>" required></label>
-            <label><textarea name="newText"><%= note.getText() %></textarea></label>
-            <label><input type="text" name="newUrl" value="<%= note.getUrl() %>"></label>
-            <label><input type="text" name="newImgUrl" value="<%= note.getImgUrl() %>"></label>
-            <label><input type="text" name="newCategories" value="<%= String.join(", ", note.getCategories()) %>" required></label>
-            <button type="submit">Save Changes</button>
-        </form>
+    <h2>Edit Note</h2>
+    <form action="note" method="post">
+        <input type="hidden" name="action" value="edit">
+        <input type="hidden" name="oldTitle" value="<%= note.getTitle() %>">
+        <label>Title: <input type="text" name="newTitle" value="<%= note.getTitle() %>" required></label>
+        <label>Content: <textarea name="newText"><%= note.getText() %></textarea></label>
+        <label>URL: <input type="text" name="newUrl" value="<%= note.getUrl() %>"></label>
+        <label>Image URL: <input type="text" name="newImgUrl" value="<%= note.getImgUrl() %>"></label>
 
-        <h2>Delete Note</h2>
+        <h3>Select Categories:</h3>
+        <%
+            List<String> allCategories = CategoryManager.getInstance().getCategories();
+            for (String category : allCategories) {
+                boolean isChecked = note.getCategories().contains(category);
+        %>
+        <label><input type="checkbox" name="categories" value="<%= category %>" <%= isChecked ? "checked" : "" %>></label> <%= category %> <br>
+        <%
+            }
+        %>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+
+    <h2>Delete Note</h2>
         <form action="note" method="post">
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="title" value="<%= note.getTitle() %>">
