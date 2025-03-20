@@ -19,6 +19,7 @@ public class NoteSearch {
                             title.contains(word) ||
                             text.contains(word) ||
                             url.contains(word) ||
+                            imgUrl.contains(word) ||
                             categories.stream().anyMatch(category -> category.contains(word))
             );
 

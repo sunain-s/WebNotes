@@ -1,31 +1,17 @@
 [ {
-  "title" : "Meeting Notes",
-  "text" : "Discuss project milestones",
-  "url" : "",
-  "imgUrl" : "",
-  "categories" : [ "Work" ]
-}, {
-  "title" : "Reference",
-  "text" : "",
+  "title" : "Testing Editing",
+  "text" : "This is a sample note",
   "url" : "https://example.com",
-  "imgUrl" : "",
-  "categories" : [ "Study", "Research" ]
+  "imgUrl" : "https://example.com/image.jpg",
+  "categories" : [ "Test", "Work" ],
+  "createdAt" : "2025-03-19T15:30:45",
+  "editedAt" : "2025-03-20T00:23:25.8895713"
 }, {
-  "title" : "Testing",
-  "text" : "testing some more stuff",
-  "url" : "",
-  "imgUrl" : "C:/Users/sunai/AGSBArchive/A-Level/Computer Science/Programming/Fun Website/Images/GintokiShock.png",
-  "categories" : [ "Wow", "Test", "Wazzap" ]
-}, {
-  "title" : "Hello",
-  "text" : "hiiiiiii\r\nnice to meet youuuuu\r\nhave a good dayyyyyyy",
+  "title" : "Meeting Notes",
+  "text" : "making some notes from a meeting i guess?",
   "url" : "",
   "imgUrl" : "",
-  "categories" : [ "Greeting", "Life" ]
-}, {
-  "title" : "Note",
-  "text" : "this is a test",
-  "url" : "",
-  "imgUrl" : "",
-  "categories" : [ "Note" ]
+  "categories" : [ "Work", "Meeting" ],
+  "createdAt" : "2025-03-20T00:25:51.4654505",
+  "editedAt" : "2025-03-20T00:25:51.4654505"
 } ]

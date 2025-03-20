@@ -1,18 +1,40 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.text.SimpleDateFormat, java.util.Date" %>
 <%@ page import="uk.ac.ucl.model.Note" %>
 
 <html>
+<%
+    Note note = (Note) request.getAttribute("note");
+    if (note != null) {
+%>
 <head>
-    <title>Note Details</title>
+    <title><%= note.getTitle() %></title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <%
-        Note note = (Note) request.getAttribute("note");
-        if (note != null) {
-    %>
+
     <h1>Note: <%= note.getTitle() %></h1>
-        <p><strong>Categories:</strong> <%= String.join(", ", note.getCategories()) %></p>
+    <strong>Created At:</strong>
+    <%
+        String createdAt = note.getCreatedAt();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(createdAt);
+            out.print(sdf.format(date));
+        } catch (Exception e) {
+            out.print(createdAt); // In case parsing fails, fallback to raw string
+        }
+    %> <br>
+    <strong>Edited At:</strong>
+    <%
+        String editedAt = note.getEditedAt();
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(editedAt);
+            out.print(sdf.format(date));
+        } catch (Exception e) {
+            out.print(editedAt); // In case parsing fails, fallback to raw string
+        }
+    %> <br>
         <p><strong>Content:</strong> <%= note.getText() %></p>
 
         <% if (note.getUrl() != null && !note.getUrl().isEmpty()) { %>

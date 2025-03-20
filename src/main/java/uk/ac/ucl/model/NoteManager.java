@@ -69,7 +69,8 @@ public class NoteManager {
         try {
             File file = new File(NOTES_PATH);
             if (file.exists()) {
-                List<Note> loadedNotes = mapper.readValue(file, new TypeReference<List<Note>>() {});
+                List<Note> loadedNotes = mapper.readValue(file, new TypeReference<>() {
+                });
                 for (Note note : loadedNotes) {
                     if (note.getCategories() == null || note.getCategories().isEmpty()) {
                         note.setCategories(List.of("Uncategorized")); // Assign a default category
