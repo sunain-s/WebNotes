@@ -13,17 +13,34 @@
 <ul>
   <%
     List<String> categories = (List<String>) request.getAttribute("allCategories");
+    if (categories.isEmpty()) {
+  %>
+  <p>No categories available.</p>
+  <%
+  } else {
     for (String category : categories) {
   %>
-  <%= category %>
+  <li>
+    <%= category %>
+    <% if (!category.equals("Uncategorized")) { %>
+    <form action="categories" method="post" style="display:inline;">
+      <input type="hidden" name="action" value="delete">
+      <input type="hidden" name="categoryToDelete" value="<%= category %>">
+      <button type="submit" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
+    </form>
+    <% } %>
+  </li>
   <%
+      }
     }
   %>
 </ul>
 
+
 <h2>Add a New Category</h2>
 <form action="categories" method="post">
-  <input type="text" name="newCategory" placeholder="Category Name" required>
+  <input type="hidden" name="action" value="add">
+  <label><input type="text" name="newCategory" placeholder="Category Name" required></label>
   <button type="submit">Add Category</button>
 </form>
 

@@ -97,6 +97,11 @@
     <button type="submit">Filter</button>
 </form>
 
+<h2>Manage Categories</h2>
+<a href="categories">
+    <button>Go to Category Management</button>
+</a>
+
 
 </body>
 </html>

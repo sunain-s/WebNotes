@@ -5,7 +5,7 @@
   "imgUrl" : "https://example.com/image.jpg",
   "categories" : [ "Test", "Work" ],
   "createdAt" : "2025-03-19T15:30:45",
-  "editedAt" : "2025-03-20T11:24:03.3238781"
+  "editedAt" : "2025-03-24T11:31:55.5140613"
 }, {
   "title" : "Meeting Notes",
   "text" : "making some notes from a meeting i guess?",
@@ -13,7 +13,7 @@
   "imgUrl" : "",
   "categories" : [ "Work", "Meeting" ],
   "createdAt" : "2025-03-20T00:25:51.4654505",
-  "editedAt" : "2025-03-20T00:25:51.4654505"
+  "editedAt" : "2025-03-24T11:31:55.5140613"
 }, {
   "title" : "Image Note",
   "text" : "trying to place an image",
@@ -21,15 +21,15 @@
   "imgUrl" : "img/GintokiShock.ico",
   "categories" : [ "Test", "Image" ],
   "createdAt" : "2025-03-20T11:08:06.1972693",
-  "editedAt" : "2025-03-20T11:08:06.1972693"
+  "editedAt" : "2025-03-24T11:31:55.5140613"
 }, {
   "title" : "Alphabet",
   "text" : "abcdefghijklmnopqrstuvwxyz",
   "url" : "",
   "imgUrl" : "",
-  "categories" : [ "Study" ],
+  "categories" : [ "Uncategorized" ],
   "createdAt" : "2025-03-20T11:24:49.1183918",
-  "editedAt" : "2025-03-20T11:24:49.1183918"
+  "editedAt" : "2025-03-24T11:31:55.5140613"
 }, {
   "title" : "Banana",
   "text" : "bananaaaaaaaaaas",
@@ -37,23 +37,23 @@
   "imgUrl" : "",
   "categories" : [ "Work", "Life", "Fun" ],
   "createdAt" : "2025-03-20T11:28:36.0068936",
-  "editedAt" : "2025-03-20T17:15:56.1488361"
+  "editedAt" : "2025-03-24T11:31:55.5140613"
 }, {
   "title" : "Mitochondria",
   "text" : "Mitochondria is the powerhouse of the cell",
   "url" : "",
   "imgUrl" : "",
-  "categories" : [ "Work", "Study" ],
+  "categories" : [ "Work" ],
   "createdAt" : "2025-03-20T15:52:22.0106259",
-  "editedAt" : "2025-03-20T16:20:36.7791162"
+  "editedAt" : "2025-03-24T11:31:55.5140613"
 }, {
   "title" : "Multi Select",
   "text" : "this is another test",
   "url" : "",
   "imgUrl" : "",
-  "categories" : [ "Test", "Study", "Meeting" ],
+  "categories" : [ "Test", "Meeting" ],
   "createdAt" : "2025-03-20T15:53:52.9402018",
-  "editedAt" : "2025-03-20T16:20:26.775498"
+  "editedAt" : "2025-03-24T11:31:55.5140613"
 }, {
   "title" : "Lina",
   "text" : "linaaaaaaaaaaaaaa",
@@ -61,5 +61,5 @@
   "imgUrl" : "img/GintokiShock.ico",
   "categories" : [ "Life", "Fun", "Image" ],
   "createdAt" : "2025-03-20T17:42:56.5387639",
-  "editedAt" : "2025-03-20T17:42:56.5387639"
+  "editedAt" : "2025-03-24T11:31:55.5140613"
 } ]

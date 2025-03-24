@@ -7,17 +7,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class CategoryManager {
-    private static final String CATEGORIES_PATH = "data/categories.json";
+    private static CategoryManager instance = null;
+    private final List<String> categories = new ArrayList<>();
+    private final NoteManager noteManager = NoteManager.getInstance();
+    private static final String CATEGORY_PATH = "data/categories.json";
     private static final ObjectMapper mapper = new ObjectMapper();
-    private static CategoryManager instance;
-    private List<String> categories;
 
     private CategoryManager() {
-        categories = new ArrayList<>();
         loadCategories();
+        categories.add("Uncategorized"); // Ensure "Uncategorized" always exists
     }
 
     public static synchronized CategoryManager getInstance() {
@@ -28,19 +28,46 @@ public class CategoryManager {
     }
 
     public List<String> getCategories() {
-        return categories;
+        return new ArrayList<>(categories);
     }
 
     public void addCategory(String category) {
-        if (category != null && !category.trim().isEmpty() && !categories.contains(category)) {
-            categories.add(category.trim());
+        if (category != null && !category.trim().isEmpty()) {
+            categories.add(category);
             saveCategories();
         }
     }
 
+    public void deleteCategory(String categoryToDelete) {
+        if (categoryToDelete == null || categoryToDelete.equals("Uncategorized")) {
+            return; // Prevent deletion of "Uncategorized"
+        }
+
+        categories.remove(categoryToDelete);
+        saveCategories();
+
+        // Update all notes that contained the deleted category
+        List<Note> notes = noteManager.getNotes();
+        for (Note note : notes) {
+            List<String> updatedCategories = note.getCategories().stream()
+                    .filter(cat -> !cat.equals(categoryToDelete))
+                    .toList();
+
+            // If a note is left with no categories, assign "Uncategorized"
+            if (updatedCategories.isEmpty()) {
+                updatedCategories = List.of("Uncategorized");
+            }
+
+            note.setCategories(updatedCategories);
+        }
+
+        // Save changes to notes
+        noteManager.publicSaveNotes();
+    }
+
     private void saveCategories() {
         try {
-            mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CATEGORIES_PATH), categories);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(new File(CATEGORY_PATH), categories);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -48,15 +75,13 @@ public class CategoryManager {
 
     private void loadCategories() {
         try {
-            File file = new File(CATEGORIES_PATH);
+            File file = new File(CATEGORY_PATH);
             if (file.exists()) {
-                    categories = mapper.readValue(file, new TypeReference<>() {
-                });
-            } else {
-                categories = new ArrayList<>();
+                List<String> loadedCategories = mapper.readValue(file, new TypeReference<>() {});
+                categories.addAll(loadedCategories);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error loading categories", e);
         }
     }
 }

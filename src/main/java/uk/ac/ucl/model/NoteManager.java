@@ -67,6 +67,10 @@ public class NoteManager {
         }
     }
 
+    public void publicSaveNotes() {
+        saveNotes();
+    }
+
     private void loadNotes() {
         try {
             File file = new File(NOTES_PATH);

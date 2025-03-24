@@ -8,24 +8,28 @@ import jakarta.servlet.http.HttpServletResponse;
 import uk.ac.ucl.model.CategoryManager;
 
 import java.io.IOException;
-import java.util.List;
-
 
 @WebServlet("/categories")
 public class CategoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CategoryManager categoryManager = CategoryManager.getInstance();
-        List<String> categories = categoryManager.getCategories();
-        request.setAttribute("allCategories", categories);
+        request.setAttribute("allCategories", categoryManager.getCategories());
         request.getRequestDispatcher("/categories.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String newCategory = request.getParameter("newCategory");
-        if (newCategory != null && !newCategory.trim().isEmpty()) {
-            CategoryManager.getInstance().addCategory(newCategory);
+        String action = request.getParameter("action");
+        if ("add".equals(action)) {
+            String newCategory = request.getParameter("newCategory");
+            if (newCategory != null && !newCategory.trim().isEmpty()) {
+                CategoryManager.getInstance().addCategory(newCategory);
+            }
+        } else if ("delete".equals(action)) {
+            String categoryToDelete = request.getParameter("categoryToDelete");
+            if (categoryToDelete != null && !categoryToDelete.trim().isEmpty()) {
+                CategoryManager.getInstance().deleteCategory(categoryToDelete);
+            }
         }
         response.sendRedirect("categories");
     }
 }
-
