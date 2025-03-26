@@ -3,7 +3,6 @@ package uk.ac.ucl.model;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class NoteSearch {
     public List<Note> searchNotes(String keyword, List<Note> notes) {
@@ -15,6 +14,7 @@ public class NoteSearch {
             String url = note.getUrl().toLowerCase();
             String imgUrl = note.getImgUrl().toLowerCase();
             List<String> categories = note.getCategories().stream().map(String::toLowerCase).toList();
+            // Search in all data fields
             boolean match = searchWords.stream().anyMatch(word ->
                             title.contains(word) ||
                             text.contains(word) ||

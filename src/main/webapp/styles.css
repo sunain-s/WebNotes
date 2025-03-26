@@ -92,7 +92,7 @@ select {
   list-style: none;
   padding: 0;
   text-align: left;
-  border-top: 1px solid #ddd; /* Faint dividing lines */
+  border-top: 1px solid #ddd;
 }
 
 .category-item {
@@ -100,17 +100,17 @@ select {
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid #ddd; /* Faint lines between categories */
+  border-bottom: 1px solid #ddd;
 }
 
 .category-name {
-  flex-grow: 1; /* Ensures category name takes up available space */
+  flex-grow: 1;
   text-align: left;
 }
 
 .category-item input[type="checkbox"] {
   margin-left: 10px;
-  transform: scale(1.2); /* Slightly larger checkboxes for better UX */
+  transform: scale(1.2);
   cursor: pointer;
 }
 
@@ -118,7 +118,7 @@ select {
 ul {
   list-style: none;
   padding: 0;
-  text-align: left;  /* Left justify the list items */
+  text-align: left;
 }
 
 li {
@@ -142,17 +142,17 @@ li.category-item {
   align-items: center;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #ddd; /* Faint line between categories */
+  border-bottom: 1px solid #ddd;
 }
 
 .delete-form {
-  margin: 0; /* Remove any extra margin around the form */
-  text-align: right; /* Ensure the delete button is aligned to the right */
+  margin: 0;
+  text-align: right;
 }
 
 .delete-category {
   background-color: transparent;
-  color: #dc3545; /* Red color for delete */
+  color: #dc3545;
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -165,7 +165,7 @@ li.category-item {
 
 .delete-category:hover {
   background-color: transparent;
-  color: #a71d2a; /* Darker red when hovering */
+  color: #a71d2a;
 }
 
 /* Navigation Styles */
@@ -186,21 +186,21 @@ nav a:hover {
 
 /* Button Styles for Links (e.g., Back to Notes) */
 .back-to-notes {
-  background-color: #007BFF; /* Blue background for the button */
+  background-color: #007BFF;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  text-decoration: none; /* Remove underline */
-  display: inline-block; /* Make it behave like a button */
+  text-decoration: none;
+  display: inline-block;
   transition: background-color 0.3s;
-  margin-top: 20px; /* Added more space above the button */
+  margin-top: 20px;
 }
 
 .back-to-notes:hover {
-  background-color: #0056b3; /* Darker blue when hovering */
+  background-color: #0056b3;
 }
 
 /* Responsive Design */

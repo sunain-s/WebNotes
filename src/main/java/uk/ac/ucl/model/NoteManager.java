@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.Comparator;
 import java.util.Collections;
 
@@ -22,6 +21,7 @@ public class NoteManager {
     }
 
     public static synchronized NoteManager getInstance() {
+        // Make singleton
         if (nm_instance == null) {
             nm_instance = new NoteManager();
         }
@@ -36,15 +36,9 @@ public class NoteManager {
         return notes.stream().filter(n -> n.getTitle().equals(title)).findFirst().orElse(null);
     }
 
-    public List<Note> getNotesByCategory(String category) {
-        return notes.stream()
-                .filter(n -> n.getCategories().contains(category))
-                .collect(Collectors.toList());
-    }
-
     public void addNote(Note note) {
         if (note.getCategories().isEmpty()) {
-            note.setCategories(List.of("Uncategorized")); // Ensure it's set only if empty
+            note.setCategories(List.of("Uncategorised"));
         }
         notes.add(note);
         saveNotes();
@@ -106,13 +100,13 @@ public class NoteManager {
             if (noteToDelete.getImgUrl() != null && !noteToDelete.getImgUrl().isEmpty()) {
                 File imageFile = new File("webapp/" + noteToDelete.getImgUrl());
                 if (imageFile.exists()) {
-                    imageFile.delete(); // Delete the image from uploads
+                    imageFile.delete();
                 }
             }
 
-            // Remove the note from the list
+            // Remove note
             notes.removeIf(n -> n.getTitle().equals(title));
-            saveNotes(); // Save updated notes.json
+            saveNotes();
         }
     }
 

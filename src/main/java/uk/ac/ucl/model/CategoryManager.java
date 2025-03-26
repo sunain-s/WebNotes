@@ -16,13 +16,15 @@ public class CategoryManager {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     private CategoryManager() {
+        // Ensure 'Uncategorised only added once
         loadCategories();
-        if (!categories.contains("Uncategorized")) {
-            categories.add("Uncategorized"); // Ensure it's only added once
+        if (!categories.contains("Uncategorised")) {
+            categories.add("Uncategorised");
         }
     }
 
     public static synchronized CategoryManager getInstance() {
+        // Make singleton
         if (instance == null) {
             instance = new CategoryManager();
         }
@@ -41,8 +43,9 @@ public class CategoryManager {
     }
 
     public void deleteCategory(String categoryToDelete) {
+        // Prevent deletion of "Uncategorised"
         if (categoryToDelete == null || categoryToDelete.equals("Uncategorised")) {
-            return; // Prevent deletion of "Uncategorized"
+            return;
         }
 
         categories.remove(categoryToDelete);
@@ -55,15 +58,14 @@ public class CategoryManager {
                     .filter(cat -> !cat.equals(categoryToDelete))
                     .toList();
 
-            // If a note is left with no categories, assign "Uncategorized"
+            // If a note is left with no categories, assign "Uncategorised"
             if (updatedCategories.isEmpty()) {
-                updatedCategories = List.of("Uncategorized");
+                updatedCategories = List.of("Uncategorised");
             }
 
             note.setCategories(updatedCategories);
         }
 
-        // Save changes to notes
         noteManager.publicSaveNotes();
     }
 

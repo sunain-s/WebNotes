@@ -16,7 +16,7 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         NoteManager manager = NoteManager.getInstance();
         String sort = request.getParameter("sort");
-        String category = request.getParameter("category"); // Get selected category filter
+        String category = request.getParameter("category");
 
         List<Note> notes = manager.getNotes();
 

@@ -18,9 +18,10 @@ import java.util.List;
 
 @WebServlet("/note")
 @MultipartConfig(
-        fileSizeThreshold = 1024 * 1024, // 1MB before storing on disk
-        maxFileSize = 50 * 1024 * 1024,   // Max file size: 50MB
-        maxRequestSize = 55 * 1024 * 1024 // Max request size: 55MB
+        // Max file size = 50MB
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 50 * 1024 * 1024,
+        maxRequestSize = 55 * 1024 * 1024
 )
 public class NoteServlet extends HttpServlet {
     private static final String UPLOAD_DIR = "uploads";
@@ -43,25 +44,26 @@ public class NoteServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if ("add".equals(action) || "edit".equals(action)) {
+            // Get data from form
             String title = request.getParameter("title");
             String text = request.getParameter("text");
             String url = request.getParameter("url");
 
-            Part filePart = request.getPart("image");  // Used when adding a new note
-            Part newFilePart = request.getPart("newImage"); // Used when editing a note
-            String imgUrl = processFileUpload(filePart, request); // Handles new note images
-            String newImgUrl = processFileUpload(newFilePart, request); // Handles edited note images
+            Part filePart = request.getPart("image");
+            Part newFilePart = request.getPart("newImage");
+            String imgUrl = processFileUpload(filePart, request);
+            String newImgUrl = processFileUpload(newFilePart, request);
 
             if (request.getAttribute("errorMessage") != null) {
                 response.sendRedirect("index");
-                return; // Stop further execution if an error occurred
+                return;
             }
 
             // Retrieve selected categories
             String[] selectedCategories = request.getParameterValues("categories");
             List<String> categories = (selectedCategories != null && selectedCategories.length > 0)
                     ? Arrays.asList(selectedCategories)
-                    : List.of("Uncategorized");
+                    : List.of("Uncategorised");
 
             if ("add".equals(action)) {
                 manager.addNote(new Note(title, text, url, imgUrl, categories));
@@ -74,8 +76,6 @@ public class NoteServlet extends HttpServlet {
                     String newTitle = title != null && !title.isEmpty() ? title : existingNote.getTitle();
                     String newText = text != null && !text.isEmpty() ? text : existingNote.getText();
                     String newUrl = url != null && !url.isEmpty() ? url : existingNote.getUrl();
-
-                    // 🔥 Preserve old image if no new image is uploaded
                     if (newImgUrl == null || newImgUrl.isEmpty()) {
                         newImgUrl = existingNote.getImgUrl();
                     }

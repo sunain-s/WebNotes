@@ -24,6 +24,7 @@ public class Note implements Serializable {
             @JsonProperty("imgUrl") String imgUrl,
             @JsonProperty("categories") List<String> categories)  {
 
+        // requires title, content and category
         if (title == null || title.isEmpty()) {
             throw new IllegalArgumentException("Note title is required");
         }
