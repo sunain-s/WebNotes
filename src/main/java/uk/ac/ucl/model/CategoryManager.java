@@ -17,7 +17,9 @@ public class CategoryManager {
 
     private CategoryManager() {
         loadCategories();
-        categories.add("Uncategorized"); // Ensure "Uncategorized" always exists
+        if (!categories.contains("Uncategorized")) {
+            categories.add("Uncategorized"); // Ensure it's only added once
+        }
     }
 
     public static synchronized CategoryManager getInstance() {
@@ -39,7 +41,7 @@ public class CategoryManager {
     }
 
     public void deleteCategory(String categoryToDelete) {
-        if (categoryToDelete == null || categoryToDelete.equals("Uncategorized")) {
+        if (categoryToDelete == null || categoryToDelete.equals("Uncategorised")) {
             return; // Prevent deletion of "Uncategorized"
         }
 

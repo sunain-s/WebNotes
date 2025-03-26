@@ -3,41 +3,25 @@
   "text" : "This is an edited sample note",
   "url" : "https://example.com",
   "imgUrl" : "https://example.com/image.jpg",
-  "categories" : [ "Test", "Work" ],
+  "categories" : [ "Test" ],
   "createdAt" : "2025-03-19T15:30:45",
-  "editedAt" : "2025-03-24T11:31:55.5140613"
+  "editedAt" : "2025-03-26T02:29:34.0266688"
 }, {
   "title" : "Meeting Notes",
   "text" : "making some notes from a meeting i guess?",
   "url" : "",
   "imgUrl" : "",
-  "categories" : [ "Work", "Meeting" ],
+  "categories" : [ "Meeting" ],
   "createdAt" : "2025-03-20T00:25:51.4654505",
-  "editedAt" : "2025-03-24T11:31:55.5140613"
-}, {
-  "title" : "Image Note",
-  "text" : "trying to place an image",
-  "url" : "",
-  "imgUrl" : "img/GintokiShock.ico",
-  "categories" : [ "Test", "Image" ],
-  "createdAt" : "2025-03-20T11:08:06.1972693",
-  "editedAt" : "2025-03-24T11:31:55.5140613"
+  "editedAt" : "2025-03-26T02:29:34.0276693"
 }, {
   "title" : "Alphabet",
   "text" : "abcdefghijklmnopqrstuvwxyz",
   "url" : "",
   "imgUrl" : "",
-  "categories" : [ "Uncategorized" ],
+  "categories" : [ "Work" ],
   "createdAt" : "2025-03-20T11:24:49.1183918",
-  "editedAt" : "2025-03-24T11:31:55.5140613"
-}, {
-  "title" : "Banana",
-  "text" : "bananaaaaaaaaaas",
-  "url" : "https://www.banana.com",
-  "imgUrl" : "",
-  "categories" : [ "Work", "Life", "Fun" ],
-  "createdAt" : "2025-03-20T11:28:36.0068936",
-  "editedAt" : "2025-03-24T11:31:55.5140613"
+  "editedAt" : "2025-03-26T02:30:17.8048923"
 }, {
   "title" : "Mitochondria",
   "text" : "Mitochondria is the powerhouse of the cell",
@@ -45,7 +29,7 @@
   "imgUrl" : "",
   "categories" : [ "Work" ],
   "createdAt" : "2025-03-20T15:52:22.0106259",
-  "editedAt" : "2025-03-24T11:31:55.5140613"
+  "editedAt" : "2025-03-26T02:30:37.6401637"
 }, {
   "title" : "Multi Select",
   "text" : "this is another test",
@@ -53,13 +37,45 @@
   "imgUrl" : "",
   "categories" : [ "Test", "Meeting" ],
   "createdAt" : "2025-03-20T15:53:52.9402018",
-  "editedAt" : "2025-03-24T11:31:55.5140613"
+  "editedAt" : "2025-03-26T02:42:43.3564711"
 }, {
-  "title" : "Lina",
-  "text" : "linaaaaaaaaaaaaaa",
-  "url" : "https://www.youtube.com",
-  "imgUrl" : "img/GintokiShock.ico",
-  "categories" : [ "Life", "Fun", "Image" ],
-  "createdAt" : "2025-03-20T17:42:56.5387639",
-  "editedAt" : "2025-03-24T11:31:55.5140613"
+  "title" : "Upload Image Test",
+  "text" : "testinggg",
+  "url" : "",
+  "imgUrl" : "uploads/GintokiShock.ico",
+  "categories" : [ "Test", "Fun", "Image" ],
+  "createdAt" : "2025-03-24T14:57:54.7172146",
+  "editedAt" : "2025-03-26T02:29:34.0276693"
+}, {
+  "title" : "Python",
+  "text" : "i love python",
+  "url" : "",
+  "imgUrl" : "uploads/python_gif.gif",
+  "categories" : [ "Life", "Image" ],
+  "createdAt" : "2025-03-24T15:21:18.742209",
+  "editedAt" : "2025-03-26T02:29:34.0276693"
+}, {
+  "title" : "Java",
+  "text" : "Java is an object oriented programming language that makes use of OO design principles to create large expandable applications",
+  "url" : "",
+  "imgUrl" : "",
+  "categories" : [ "Work" ],
+  "createdAt" : "2025-03-26T00:21:17.1573256",
+  "editedAt" : "2025-03-26T02:30:48.8551812"
+}, {
+  "title" : "Banana",
+  "text" : "bananaaaaaaaaaaaas",
+  "url" : "",
+  "imgUrl" : "uploads/minion_banana.jpg",
+  "categories" : [ "Life", "Image" ],
+  "createdAt" : "2025-03-26T00:22:54.5158633",
+  "editedAt" : "2025-03-26T02:31:00.17324"
+}, {
+  "title" : "Image Note",
+  "text" : "this note has an image",
+  "url" : "",
+  "imgUrl" : "uploads/Jiraiya Background.jpg",
+  "categories" : [ "Image" ],
+  "createdAt" : "2025-03-26T02:13:05.9914051",
+  "editedAt" : "2025-03-26T02:42:36.8931708"
 } ]

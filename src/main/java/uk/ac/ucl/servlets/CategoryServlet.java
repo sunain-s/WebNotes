@@ -19,6 +19,7 @@ public class CategoryServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action");
+
         if ("add".equals(action)) {
             String newCategory = request.getParameter("newCategory");
             if (newCategory != null && !newCategory.trim().isEmpty()) {
@@ -30,6 +31,7 @@ public class CategoryServlet extends HttpServlet {
                 CategoryManager.getInstance().deleteCategory(categoryToDelete);
             }
         }
+
         response.sendRedirect("categories");
     }
 }

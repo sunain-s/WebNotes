@@ -43,6 +43,9 @@ public class NoteManager {
     }
 
     public void addNote(Note note) {
+        if (note.getCategories().isEmpty()) {
+            note.setCategories(List.of("Uncategorized")); // Ensure it's set only if empty
+        }
         notes.add(note);
         saveNotes();
     }
@@ -75,11 +78,10 @@ public class NoteManager {
         try {
             File file = new File(NOTES_PATH);
             if (file.exists()) {
-                List<Note> loadedNotes = mapper.readValue(file, new TypeReference<>() {
-                });
+                List<Note> loadedNotes = mapper.readValue(file, new TypeReference<>() {});
                 for (Note note : loadedNotes) {
-                    if (note.getCategories() == null || note.getCategories().isEmpty()) {
-                        note.setCategories(List.of("Uncategorized")); // Assign a default category
+                    if (note.getCategories().isEmpty()) {
+                        note.setCategories(List.of("Uncategorized")); // Fix missing categories
                     }
                 }
                 notes = loadedNotes;
@@ -92,8 +94,21 @@ public class NoteManager {
     }
 
     public void deleteNote(String title) {
-        notes.removeIf(n -> n.getTitle().equals(title));
-        saveNotes();
+        Note noteToDelete = getNoteByTitle(title);
+
+        if (noteToDelete != null) {
+            // Remove image file if it exists
+            if (noteToDelete.getImgUrl() != null && !noteToDelete.getImgUrl().isEmpty()) {
+                File imageFile = new File("webapp/" + noteToDelete.getImgUrl());
+                if (imageFile.exists()) {
+                    imageFile.delete(); // Delete the image from uploads
+                }
+            }
+
+            // Remove the note from the list
+            notes.removeIf(n -> n.getTitle().equals(title));
+            saveNotes(); // Save updated notes.json
+        }
     }
 
     public List<Note> searchNotes(String searchTerm) {

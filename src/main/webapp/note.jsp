@@ -42,19 +42,44 @@
             <p><strong>URL:</strong> <a href="<%= note.getUrl() %>"><%= note.getUrl() %></a></p>
         <% } %>
 
-        <% if (note.getImgUrl() != null && !note.getImgUrl().isEmpty()) { %>
+    <%
+        if (note.getImgUrl() != null && !note.getImgUrl().isEmpty()) {
+    %>
             <p><strong>Image:</strong></p>
             <img src="<%= note.getImgUrl() %>" alt="Note Image" width="200">
-        <% } %>
+    <%
+        }
+    %>
 
     <h2>Edit Note</h2>
-    <form action="note" method="post">
+    <form action="note" method="post" enctype="multipart/form-data">  <!-- Enable file uploads -->
         <input type="hidden" name="action" value="edit">
         <input type="hidden" name="oldTitle" value="<%= note.getTitle() %>">
-        <label>Title: <input type="text" name="newTitle" value="<%= note.getTitle() %>" required></label>
-        <label>Content: <textarea name="newText"><%= note.getText() %></textarea></label>
-        <label>URL: <input type="text" name="newUrl" value="<%= note.getUrl() %>"></label>
-        <label>Image URL: <input type="text" name="newImgUrl" value="<%= note.getImgUrl() %>"></label>
+
+        <label>Title:</label>
+        <label>
+            <input type="text" name="newTitle" value="<%= note.getTitle() %>" required>
+        </label>
+
+        <label>Content:</label>
+        <label>
+            <textarea name="newText"><%= note.getText() %></textarea>
+        </label>
+
+        <label>URL:</label>
+        <label>
+            <input type="text" name="newUrl" value="<%= note.getUrl() %>">
+        </label>
+
+        <h3>Current Image:</h3>
+        <% if (note.getImgUrl() != null && !note.getImgUrl().isEmpty()) { %>
+        <img src="<%= note.getImgUrl() %>" alt="Note Image" width="200">
+        <br>
+        <input type="hidden" name="existingImageUrl" value="<%= note.getImgUrl() %>">  <!-- Keep old image -->
+        <% } %>
+
+        <label>Upload New Image (optional):</label>
+        <input type="file" name="newImage" accept="image/*">
 
         <h3>Select Categories:</h3>
         <%
@@ -62,7 +87,10 @@
             for (String category : allCategories) {
                 boolean isChecked = note.getCategories().contains(category);
         %>
-        <label><input type="checkbox" name="categories" value="<%= category %>" <%= isChecked ? "checked" : "" %>></label> <%= category %> <br>
+        <label>
+            <input type="checkbox" name="categories" value="<%= category %>" <%= isChecked ? "checked" : "" %>>
+            <%= category %>
+        </label><br>
         <%
             }
         %>
@@ -70,9 +98,8 @@
         <button type="submit">Save Changes</button>
     </form>
 
-
     <h2>Delete Note</h2>
-        <form action="note" method="post">
+        <form action="note" method="post" onsubmit="return confirm('Are you sure you want to delete this note')">
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="title" value="<%= note.getTitle() %>">
             <button type="submit">Delete</button>

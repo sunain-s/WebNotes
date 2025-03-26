@@ -36,7 +36,6 @@
   %>
 </ul>
 
-
 <h2>Add a New Category</h2>
 <form action="categories" method="post">
   <input type="hidden" name="action" value="add">
