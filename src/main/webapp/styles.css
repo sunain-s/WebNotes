@@ -1,3 +1,219 @@
-.clearBoth {
-  clear: both;
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Container Styles */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Form Styles */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+}
+
+/* Input Fields */
+input[type="text"], input[type="file"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Category List Styles */
+.category-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  border-top: 1px solid #ddd; /* Faint dividing lines */
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd; /* Faint lines between categories */
+}
+
+.category-name {
+  flex-grow: 1; /* Ensures category name takes up available space */
+  text-align: left;
+}
+
+.category-item input[type="checkbox"] {
+  margin-left: 10px;
+  transform: scale(1.2); /* Slightly larger checkboxes for better UX */
+  cursor: pointer;
+}
+
+/* List Styles */
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;  /* Left justify the list items */
+}
+
+li {
+  margin: 10px 0;
+}
+
+li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+li a:hover {
+  color: #007BFF;
+}
+
+/* Category Management Styles */
+li.category-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd; /* Faint line between categories */
+}
+
+.delete-form {
+  margin: 0; /* Remove any extra margin around the form */
+  text-align: right; /* Ensure the delete button is aligned to the right */
+}
+
+.delete-category {
+  background-color: transparent;
+  color: #dc3545; /* Red color for delete */
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.delete-category:hover {
+  background-color: transparent;
+  color: #a71d2a; /* Darker red when hovering */
+}
+
+/* Navigation Styles */
+nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  margin-right: 15px;
+  color: #007BFF;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Button Styles for Links (e.g., Back to Notes) */
+.back-to-notes {
+  background-color: #007BFF; /* Blue background for the button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make it behave like a button */
+  transition: background-color 0.3s;
+  margin-top: 20px; /* Added more space above the button */
+}
+
+.back-to-notes:hover {
+  background-color: #0056b3; /* Darker blue when hovering */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
 }

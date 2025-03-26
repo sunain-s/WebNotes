@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<div class="container">
     <h1>Notes in Category: <%= request.getAttribute("categories") %></h1>
 
     <h2>Sort Notes in Category: <%= request.getAttribute("categories") %></h2>
@@ -32,19 +33,21 @@
             if (notes != null && !notes.isEmpty()) {
                 for (Note note : notes) {
         %>
-                    <li>
-                        <a href="note?title=<%= note.getTitle() %>"><%= note.getTitle() %></a> - Categories:
-                        <%= String.join(", ", note.getCategories()) %>
-                    </li>
+        <li>
+            <a href="note?title=<%= note.getTitle() %>"><%= note.getTitle() %></a> - Categories:
+            <%= String.join(", ", note.getCategories()) %>
+        </li>
         <%
-                }
-            } else {
+            }
+        } else {
         %>
-                <p>No notes found in this category.</p>
+        <p>No notes found in this category.</p>
         <%  }%>
     </ul>
 
     <br>
-    <a href="index">Back to Notes</a>
+    <a href="index" class="back-to-notes">Back to Notes Index</a>
+</div>
+
 </body>
 </html>

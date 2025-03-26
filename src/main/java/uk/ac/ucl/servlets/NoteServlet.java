@@ -19,8 +19,8 @@ import java.util.List;
 @WebServlet("/note")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024, // 1MB before storing on disk
-        maxFileSize = 20 * 1024 * 1024,   // Max file size: 20MB
-        maxRequestSize = 25 * 1024 * 1024 // Max request size: 25MB
+        maxFileSize = 50 * 1024 * 1024,   // Max file size: 50MB
+        maxRequestSize = 55 * 1024 * 1024 // Max request size: 55MB
 )
 public class NoteServlet extends HttpServlet {
     private static final String UPLOAD_DIR = "uploads";
@@ -35,7 +35,7 @@ public class NoteServlet extends HttpServlet {
         } else {
             request.setAttribute("note", note);
             request.getRequestDispatcher("/note.jsp").forward(request, response);
-        }
+}
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -47,14 +47,13 @@ public class NoteServlet extends HttpServlet {
             String text = request.getParameter("text");
             String url = request.getParameter("url");
 
-            // 🔥 Use "image" for adding new notes, "newImage" for editing notes
             Part filePart = request.getPart("image");  // Used when adding a new note
             Part newFilePart = request.getPart("newImage"); // Used when editing a note
             String imgUrl = processFileUpload(filePart, request); // Handles new note images
             String newImgUrl = processFileUpload(newFilePart, request); // Handles edited note images
 
             if (request.getAttribute("errorMessage") != null) {
-                request.getRequestDispatcher("/note.jsp").forward(request, response);
+                response.sendRedirect("index");
                 return; // Stop further execution if an error occurred
             }
 
@@ -103,8 +102,8 @@ public class NoteServlet extends HttpServlet {
         }
 
         // Check file size (server-side validation)
-        if (filePart.getSize() > 20 * 1024 * 1024) { // 20MB limit
-            request.setAttribute("errorMessage", "The uploaded image is too large! Please select a file smaller than 20MB.");
+        if (filePart.getSize() > 50 * 1024 * 1024) { // 20MB limit
+            request.setAttribute("errorMessage", "The uploaded image is too large! Please select a file smaller than 50MB.");
             return null; // Prevent saving the file
         }
 
