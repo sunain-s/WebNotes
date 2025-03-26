@@ -2,7 +2,7 @@
   "title" : "Testing Editing",
   "text" : "This is an edited sample note",
   "url" : "https://example.com",
-  "imgUrl" : "https://example.com/image.jpg",
+  "imgUrl" : "",
   "categories" : [ "Test", "Work" ],
   "createdAt" : "2025-03-19T15:30:45",
   "editedAt" : "2025-03-26T14:01:47.6710861"
@@ -51,9 +51,9 @@
   "text" : "i love python",
   "url" : "",
   "imgUrl" : "uploads/python_gif.gif",
-  "categories" : [ "Life", "Image" ],
+  "categories" : [ "Life", "Fun", "Image" ],
   "createdAt" : "2025-03-24T15:21:18.742209",
-  "editedAt" : "2025-03-26T14:08:50.399441"
+  "editedAt" : "2025-03-26T14:15:50.7163452"
 }, {
   "title" : "Java",
   "text" : "Java is an object oriented programming language that makes use of OO design principles to create large expandable applications",
