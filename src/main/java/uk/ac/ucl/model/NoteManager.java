@@ -50,13 +50,18 @@ public class NoteManager {
         saveNotes();
     }
 
-    public void editNote(String oldTitle, String newTitle, String newText, String newUrl,  String newImgUrl, List<String> newCategories) {
+    public void editNote(String oldTitle, String newTitle, String newText, String newUrl, String newImgUrl, List<String> newCategories) {
         Note note = getNoteByTitle(oldTitle);
         if (note != null) {
             note.setTitle(newTitle);
             note.setText(newText);
             note.setUrl(newUrl);
-            note.setImgUrl(newImgUrl);
+
+            // Only update image if a new one is uploaded
+            if (newImgUrl != null && !newImgUrl.isEmpty()) {
+                note.setImgUrl(newImgUrl);
+            }
+
             note.setCategories(newCategories);
             saveNotes();
         }

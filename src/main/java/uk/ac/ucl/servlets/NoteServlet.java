@@ -31,7 +31,7 @@ public class NoteServlet extends HttpServlet {
         Note note = manager.getNoteByTitle(title);
 
         if (note == null) {
-            response.sendRedirect("/index");
+            response.sendRedirect("index");
         } else {
             request.setAttribute("note", note);
             request.getRequestDispatcher("/note.jsp").forward(request, response);
@@ -47,12 +47,14 @@ public class NoteServlet extends HttpServlet {
             String text = request.getParameter("text");
             String url = request.getParameter("url");
 
-            // Handle image upload
-            Part filePart = request.getPart("image");
-            String imgUrl = processFileUpload(filePart, request);
+            // 🔥 Use "image" for adding new notes, "newImage" for editing notes
+            Part filePart = request.getPart("image");  // Used when adding a new note
+            Part newFilePart = request.getPart("newImage"); // Used when editing a note
+            String imgUrl = processFileUpload(filePart, request); // Handles new note images
+            String newImgUrl = processFileUpload(newFilePart, request); // Handles edited note images
 
             if (request.getAttribute("errorMessage") != null) {
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                request.getRequestDispatcher("/note.jsp").forward(request, response);
                 return; // Stop further execution if an error occurred
             }
 
@@ -64,8 +66,6 @@ public class NoteServlet extends HttpServlet {
 
             if ("add".equals(action)) {
                 manager.addNote(new Note(title, text, url, imgUrl, categories));
-                response.sendRedirect("index"); // 🔥 Redirect after successful add
-                return;
             } else {
                 String oldTitle = request.getParameter("oldTitle");
                 Note existingNote = manager.getNoteByTitle(oldTitle);
@@ -76,25 +76,24 @@ public class NoteServlet extends HttpServlet {
                     String newText = text != null && !text.isEmpty() ? text : existingNote.getText();
                     String newUrl = url != null && !url.isEmpty() ? url : existingNote.getUrl();
 
-                    // 🔥 Preserve old image if no new one is uploaded
-                    String newImgUrl = (imgUrl != null && !imgUrl.isEmpty()) ? imgUrl : existingNote.getImgUrl();
+                    // 🔥 Preserve old image if no new image is uploaded
+                    if (newImgUrl == null || newImgUrl.isEmpty()) {
+                        newImgUrl = existingNote.getImgUrl();
+                    }
 
                     manager.editNote(oldTitle, newTitle, newText, newUrl, newImgUrl, categories);
                 }
-
-                response.sendRedirect("index"); // 🔥 Redirect after successful edit
-                return;
             }
+
+            response.sendRedirect("index");
         } else if ("delete".equals(action)) {
             String title = request.getParameter("title");
             if (title != null && !title.isEmpty()) {
                 manager.deleteNote(title);
             }
-            response.sendRedirect("index"); // 🔥 Redirect after successful delete
-            return;
+            response.sendRedirect("index");
         }
     }
-
 
 
 

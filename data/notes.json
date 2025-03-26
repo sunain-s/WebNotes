@@ -72,10 +72,10 @@
   "editedAt" : "2025-03-26T02:31:00.17324"
 }, {
   "title" : "Image Note",
-  "text" : "this note has an image",
-  "url" : "",
+  "text" : "note has an image",
+  "url" : "https://www.image.com",
   "imgUrl" : "uploads/Jiraiya Background.jpg",
-  "categories" : [ "Image" ],
+  "categories" : [ "Test", "Image" ],
   "createdAt" : "2025-03-26T02:13:05.9914051",
-  "editedAt" : "2025-03-26T02:42:36.8931708"
+  "editedAt" : "2025-03-26T09:10:43.4761982"
 } ]
